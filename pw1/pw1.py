@@ -111,10 +111,10 @@ class Library:
             i = 1
             for b in self.storage:
                 print(f"Book №{i}:")
-                print(f"    Title: {b.title};")
-                print(f"    Autor: {b.autor};")
-                print(f"    Year : {b.year};")
-                print(f"    Genre: {b.genre};")
+                print(f"    Title : {b.title};")
+                print(f"    Author: {b.author};")
+                print(f"    Year  : {b.year};")
+                print(f"    Genre : {b.genre};")
                 print("---")
                 i += 1
             
@@ -122,10 +122,10 @@ class Library:
 
 class Book:
     def __init__(self, t, a, y, g):
-        self._title  = t
-        self._autor = a
-        self._year  = y
-        self._genre = g
+        self.title  = t
+        self.author = a
+        self.year  = y
+        self.genre = g
 
     @property
     def title(self): 
@@ -140,15 +140,15 @@ class Book:
     
 
     @property
-    def autor(self): 
-        return self._autor 
+    def author(self): 
+        return self._author
     
-    @autor.setter 
-    def autor(self, a): 
+    @author.setter 
+    def author(self, a): 
         if (isinstance(a, str)): 
-            self._autor = a 
+            self._author = a 
         else:
-           print("ERROR: autor name must be string type")
+           print("ERROR: author name must be string type")
     
 
     @property
@@ -157,7 +157,10 @@ class Book:
     
     @year.setter 
     def year(self, y): 
-        self._year = int(y)
+        if str(y).isdigit(): 
+            self._year = int(y)
+        else:
+           print("ERROR: year of writing the book must be a numeric type")
 
     
     @property
@@ -190,7 +193,7 @@ lib.print_l()
 print("\n-=-=-=-=-=-\n")
 
 b3.title = "Monday Begins on Saturday"
-b3.autor = "Boris and Arkady Strugatsky"
+b3.author = "Boris and Arkady Strugatsky"
 b3.year  = 1965
 b3.genre = 13 # ERROR: book genre must be string type
 b3.genre = "Science fantasy"
