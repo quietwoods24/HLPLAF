@@ -3,13 +3,25 @@ print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 #     3. Write a program that takes two numbers from the user 
 #        and prints their sum.
 
-print("Write first number : ", end='')
-num1 = int(input())
-print("Write cecond number: ", end='')
-num2 = int(input())
+flag_n = True
+num1 = input("Write first number : ")
+if num1.isdigit():
+    num1 = int(num1)
+else:
+    flag_n = False
+    print("Input value is not a number")
 
-print("\nResult: ")
-print(f"{num1} + {num2} = {num1 + num2}")
+num2 = input("Write second number: ")
+if num2.isdigit():
+    num2 = int(num2)
+else:
+    flag_n = False
+    print("Input value is not a number")
+
+if (flag_n):
+    print("\nResult: ")
+    print(f"{num1} + {num2} = {num1 + num2}")
+
 print("\n")
 
 
@@ -19,8 +31,12 @@ print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 #     3. Write a program that determines whether a number entered 
 #        by the user is prime.
 
-print("Write number : ", end='')
-num = int(input())
+num = input("Write natural number: ")
+if num.isdigit():
+    num = int(num)
+else:
+    print("Input value is not a number")
+
 flag = True
 # https://geekflare.com/dev/prime-number-in-python/
 if (num == 1):
@@ -61,6 +77,7 @@ class Calculator:
         return num1 / num2
 
 calc = Calculator()
+# https://www.geeksforgeeks.org/python/gfact-50-python-end-parameter-in-print/
 print("Write first number : ", end='')
 num3 = int(input())
 print("Write cecond number: ", end='')
@@ -95,17 +112,19 @@ class Library:
             print("ERROR: can't add, variable isn't Book type")
 
     def delete(self, book):
-        if (isinstance(book, Book)): 
+        if (isinstance(book, Book)):             
+            # https://www.w3schools.com/python/python_try_except.asp
             try:
+                # https://www.mygreatlearning.com/blog/remove-item-from-list-python/
                 self.storage.remove(book)
-            except ValueError as e:
+            except:
                 print(f"ERROR: Book '{book.title}' is not present in the library")
         else:
             print("ERROR: can't remove, variable isn't Book type")
 
 
     def print_l(self):
-        if not self.storage:
+        if len(self.storage) == 0:
             print("ERROR: there is no books in storage")
         else:
             i = 1
@@ -121,12 +140,18 @@ class Library:
 
 
 class Book:
+    # To indicate that an attribute or method is non-public, 
+    # you should follow the common Python convention of 
+    # prefixing the attribute or method name with an 
+    # underscore (_). 
+    
     def __init__(self, t, a, y, g):
-        self.title  = t
-        self.author = a
-        self.year  = y
-        self.genre = g
+        self._title  = t
+        self._author = a
+        self._year  = y
+        self._genre = g
 
+    # https://www.geeksforgeeks.org/python/python-property-decorator-property/
     @property
     def title(self): 
         return self._title 
