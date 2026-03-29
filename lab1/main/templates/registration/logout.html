@@ -1,0 +1,13 @@
+{% extends "u_base.html" %}
+
+{% block info %}
+    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}        
+        <span class="aut-a-container">
+            <button type="submit" class="aut-a-reset">
+                Logout
+            </button>
+        </span>
+        
+    </form>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block info %}
+    <div>
+        <span class="main-h">Hello, </h3>
+        <span class="user-h">{{ user.username|default:"Guest" }}!</span>
+    </div>
+
+    {% if user.is_authenticated %}
+        {% include "registration/logout.html" %}
+        <br/>
+        <br/>
+        <div class="btn-add">
+            <a href="{% url 'add' %}">Add Article</a>
+        </div>
+        
+    {% else %}
+        <span class="aut-a-container">
+            <a href="{% url 'login' %}" class="aut-a">Login</a>
+        </span>
+
+        <span class="aut-a-container">
+            <a href="{% url 'signup' %}" class="aut-a">Sign up</a>
+        </span>
+        <br/>
+        <br/>        
+    {% endif %}
+
+    
+    {% for el in articles reversed %}
+        <div style="margin-bottom: 40px;">
+            <div class="article-container">
+                <h3 class="article-h">{{ el.heading }}</h3>
+                <div>
+                    <span class="article-date">{{ el.creation_date }}</span> 
+                </div>
+                <div>
+                    <span class="article-info-title">Author:</span> 
+                    <span class="article-info">{{ el.author.username }}</span>
+                </div>
+                <div>
+                    <span class="article-info-title">Theme:</span> 
+                    <span class="article-info">{{ el.theme }}</span>
+                </div>
+
+                <div class="article-text">
+                    {{ el.body|linebreaks }} 
+                </div>
+                
+            </div>
+            {% if user.is_authenticated and el.author == user%}
+                <div class="btn-delete">
+                    <a href="{% url 'delete' el.id %}" title="Delete">Delete</a>
+                </div>
+                <div class="btn-update">
+                    <a href="{% url 'update' el.id %}" title="Update">Update</a>
+                </div>
+            {% else %}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}    

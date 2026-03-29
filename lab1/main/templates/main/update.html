@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block info %}
+    <div class="update-container">
+        <form method="post">
+            {% csrf_token %}
+            <div>{{ form.heading }}</div>
+            <div>{{ form.body }}</div>
+            <div>{{ form.theme }}</div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn-update" type="submit" style="color: #FFFFFF;">
+                    Update
+                </button>
+            </div>
+        </form>
+
+        <p>
+            <a href="/" class="back-link">Back to main page</a>
+        </p>
+    </div>
+{% endblock %}    

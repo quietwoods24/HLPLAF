@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block info %}
+    <div class="aut-container">
+        <h2>Sign Up</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+
+            <div style="text-align: center;">
+                <span class="aut-a-container btn-logout-gradient">
+                    <button type="submit" class="aut-a-reset">
+                        Sign Up
+                    </button>
+                </span>
+            </div>
+
+        </form>
+
+        <div style="text-align: center; margin-top: 45px;">
+            <div class="u-note">Have an account already?</div>
+            <a href="{% url 'login' %}" class="aut-m">Log in</a>
+        </div>
+
+
+        <p>
+            <a href="/" class="back-link">Back to main page</a>
+        </p>
+    </div>
+{% endblock%}
