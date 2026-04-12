@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+    <title>Task 3-4</title>
+
+    <style>
+        :root {
+            --page-bg-color: #F0F0F0;
+            --main-text-color: #26252C;
+            --card-bg-gradient: linear-gradient(139deg, #E5E8EE, rgba(209, 207, 216, 1) 100%);
+            --main-font: "Cascadia Mono", sans-serif;
+        }
+        
+        body {
+            background-color: var(--page-bg-color);
+            color: var(--main-text-color);
+            font-family: var(--main-font);
+            padding: 20px;
+        }
+
+        .std-info-container, input, button, select, .movie-card {
+            font-family: var(--main-font) !important;
+            font-size: 14px;
+        }
+
+        .std-info-container {
+            background: var(--card-bg-gradient);
+            border-radius: 10px 30px 10px 10px;
+            padding: 28px;
+            border: 1px solid #C5C5C5;
+            width: 700px;
+            margin: 50px auto;
+        }
+
+        .info-h {
+            color: var(--main-text-color);
+            font-style: italic;
+            font-weight: 500;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .controls, .filters {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        input[type="text"], input[type="number"], select {
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #999;
+            background: rgba(255,255,255,0.5);
+            width: 150px;
+        }
+
+        label {
+            padding-bottom: 3px;
+            display: inline-block;
+            font-style: italic;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #26252C;
+            border-color: #26252C;
+            color: #e4e4e4;
+            border-radius: 5px;
+            transition: all 200ms ease;
+            cursor: pointer;
+            height: 31px;
+        }
+
+        button:hover {
+            background-color: #363542;
+            border-color: #afadbb;
+        }
+
+        .movie-card {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid #C5C5C5;
+            border-radius: 13px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .movie-card h3 {
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        .movie-card p {
+            margin: 5px 0;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #C5C5C5;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="std-info-container" id="container">
+
+        <p class="info-h">Add new movie:</p>
+        <div class="controls">
+            <div>
+                <label>Title:</label><br>
+                <input type="text" id="title" placeholder="Movie title...">
+            </div>
+            <div>
+                <label>Review:</label><br>
+                <input type="text" id="review" placeholder="A short review...">
+            </div>
+
+            <div>
+                <label>Genre:</label><br>
+                <select id="genre">
+                    <option value="comedy">Comedy</option>
+                    <option value="action-adventure">Action-adventure</option>
+                    <option value="science fiction">Science fiction</option>
+                    <option value="fantasy">Fantasy</option>
+                </select>
+            </div>
+            <div>
+                <label>Rating (1-10):</label><br>
+                <input type="number" id="rating" placeholder="1-10" min="1" max="10" style="width: 80px;">
+            </div>
+            <div>
+                <button id="add-btn">Add film</button>
+            </div>
+        </div>
+
+        <div id="message" style="margin-top: 5px; margin-bottom: 15px; font-weight: bold; min-height: 20px;"></div>
+
+        <hr>
+
+        <p class="info-h">Search and filter:</p>
+        <div class="filters">
+            <div>
+                <label>Search:</label><br>
+                <input type="text" id="search" placeholder="Search by title...">
+            </div>
+            <div>
+                <label>Genre:</label><br>
+                <select id="filter-genre">
+                    <option value="all">All genres</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="action-adventure">Action-adventure</option>
+                    <option value="science fiction">Science fiction</option>
+                    <option value="fantasy">Fantasy</option>
+                </select>
+            </div>
+            <div>
+                <label>Sort by:</label><br>
+                <select id="sort-rating">
+                    <option value="default">Sorting: default</option>
+                    <option value="desc">Rating: from the highest</option>
+                    <option value="asc">Rating: from the lowest</option>
+                </select>
+            </div>
+        </div>
+
+        <p class="info-h">Movies List:</p>
+        <div id="movies-list"></div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'movies_data';
+
+        const defaultMovies = [
+            {
+                title: "Home",
+                rating: 10,
+                genre: "comedy",
+                review: "A cowardly alien race called the Boov, led by Captain Smek, commence their friendly invasion on Earth."
+            },
+            {
+                title: "After Earth",
+                rating: 9,
+                genre: "action-adventure",
+                review: "In the future on a human-populated space colony, Nova Prime, the S'krell extraterrestrial race attempts to take it over."
+            },
+            {
+                title: "I, Robot",
+                rating: 9,
+                genre: "science fiction",
+                review: "In the year 2035, humanoid robots serve humanity, which is protected by the Three Laws of Robotics."
+            },
+            {
+                title: "Spirited Away",
+                rating: 8,
+                genre: "fantasy",
+                review: "A sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits."
+            }
+        ];
+
+        let movies = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultMovies;
+
+        const listContainer = document.getElementById('movies-list');
+        const messageDisplay = document.getElementById('message');
+        
+        const titleInput = document.getElementById('title');
+        const reviewInput = document.getElementById('review');
+        const genreInput = document.getElementById('genre');
+        const ratingInput = document.getElementById('rating');
+
+        const searchInput = document.getElementById('search');
+        const filterGenreInput = document.getElementById('filter-genre');
+        const sortRatingInput = document.getElementById('sort-rating');
+        const addBtn = document.getElementById('add-btn');
+
+        addBtn.addEventListener('click', addMovie);
+        searchInput.addEventListener('input', render);
+        filterGenreInput.addEventListener('change', render);
+        sortRatingInput.addEventListener('change', render);
+
+        function saveToStorage() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(movies));
+        }
+
+        function showMessage(message, type) {
+            messageDisplay.textContent = message;
+            messageDisplay.style.color = type === "error" ? "#d93025" : "#188038";
+        }
+
+        function addMovie() {
+            let title = titleInput.value.trim();
+            let review = reviewInput.value.trim();
+            let genre = genreInput.value;
+            let rating = parseInt(ratingInput.value);
+
+            if (!title || !review || isNaN(rating) || rating < 1 || rating > 10) {
+                showMessage('Please fill in all fields correctly (Rating 1-10)', 'error');
+                return;
+            }
+
+            movies.push({ title, review, genre, rating });
+            saveToStorage();
+            render();
+            
+            showMessage('Movie successfully added!', 'success');
+
+            titleInput.value = '';
+            reviewInput.value = '';
+            ratingInput.value = '';
+        }
+
+        function render() {
+            listContainer.innerHTML = '';
+
+            let query = searchInput.value.toLowerCase();
+            let selectedGenre = filterGenreInput.value;
+            let sortType = sortRatingInput.value;
+
+            let result = [...movies];
+
+            result = result.filter(e => {
+                let textMatch = e.title.toLowerCase().includes(query);
+                let genreMatch = selectedGenre === 'all' || e.genre === selectedGenre;
+                return textMatch && genreMatch;
+            });
+
+            if (sortType === 'desc') {
+                // https://www.w3schools.com/jsref/jsref_sort.asp
+                result.sort((a, b) => b.rating - a.rating);
+            } else if (sortType === 'asc') {
+                result.sort((a, b) => a.rating - b.rating);
+            }
+
+            if (result.length === 0) {
+                listContainer.innerHTML = '<p style="font-style: italic;">Nothing found</p>';
+                return;
+            }
+
+            result.forEach(e => {
+                let card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <h3>
+                        ${e.title} 
+                    </h3>
+                    <p><strong>Genre:</strong> ${e.genre}</p>
+                    <p><strong>Rating:</strong> ${e.rating}/10</p>
+                    <p><strong>Review:</strong> ${e.review}</p>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>

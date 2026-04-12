@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Meowsy",
+    "species" : "cat",
+    "foods": "tuna"
+  },
+  {
+    "name": "Barky",
+    "species" : "dog",
+    "foods": "bones"
+  },
+  {
+    "name": "Purrpaws",
+    "species" : "cat",
+    "foods": "mice"
+  },
+  {
+    "name": "Cheese",
+    "species" : "mouse",
+    "foods": "seeds"
+  },
+  {
+    "name": "Cheese",
+    "species" : "hamster",
+    "foods": "seeds"
+  }
+]

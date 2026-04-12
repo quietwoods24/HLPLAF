@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Task 1</title>
+
+    <style>
+        :root {
+            --page-bg-color: #F0F0F0;
+            --main-text-color: #26252C;
+            --card-bg-gradient: linear-gradient(139deg, #E5E8EE, rgba(209, 207, 216, 1) 100%);
+            /* --card-bg-gradient: linear-gradient(139deg, rgba(250, 233, 186, 1) 0%, rgba(255, 205, 124, 1) 100%); */
+            --main-font: "Bitcount Single", system-ui;
+        }
+
+        body {
+            background-color: var(--page-bg-color);
+            color: var(--main-text-color);
+            font-family: var(--main-font);
+        }
+
+        .std-info-container {
+            background: var(--card-bg-gradient);
+            border-radius: 10px 30px 10px 10px;
+
+            padding: 28px 28px 56px 28px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #C5C5C5;
+
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30vh;
+        }
+
+        .info-h {
+            font-style: italic;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Displaying personal information: -->
+    <div class="std-info-container" id="container">        
+    </div>
+
+    <!-- Create an HTML file containing a script element -->
+    <script>
+       
+       // Use fetch to load a JSON file containing your data (name, age, hobbies)
+        fetch('info.json')
+            .then(response => response.text())
+            .then(textData => {
+                
+                // Parse the JSON file using JSON.parse()
+                let data = JSON.parse(textData);
+                let container = document.getElementById('container');
+
+                // Use document.createElement() to create HTML elements that display your data
+                let firstname = document.createElement('p');
+                firstname.innerHTML = `
+                <span class="info-h">
+                    First name:
+                </span>${data.firstname}`;
+
+                let lastname = document.createElement('p');
+                lastname.innerHTML = `
+                <span class="info-h">
+                    Last name:
+                </span>${data.lastname}`;
+
+                let age = document.createElement('p');
+                age.innerHTML = `
+                <span class="info-h">
+                    Age: 
+                </span>${data.age}`;
+
+                let hobbies = document.createElement('p');
+                hobbies.innerHTML = `
+                <span class="info-h">
+                    Hobbies: 
+                </span>${data.hobbies.join(', ')}  ;))))))`;
+
+                container.append(firstname, lastname, age, hobbies);
+            })
+            .catch(error => console.error('Load error:', error));
+    </script>
+</body>
+</html>
