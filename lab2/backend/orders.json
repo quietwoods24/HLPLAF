@@ -1,0 +1,189 @@
+[
+  {
+    "id": 1776177310068,
+    "userId": 1776177252045,
+    "items": [
+      {
+        "id": 1,
+        "name": "Корм Royal Canin (2кг)",
+        "price": 450,
+        "category": "food"
+      },
+      {
+        "id": 2,
+        "name": "М'ячик для собак",
+        "price": 150,
+        "category": "toys"
+      },
+      {
+        "id": 3,
+        "name": "Лежанка (M)",
+        "price": 850,
+        "category": "accessories"
+      }
+    ],
+    "total": 1450,
+    "shippingDetails": {
+      "address": "Харків",
+      "phone": "+380 67 466 0 466"
+    },
+    "createdAt": 1776177310068
+  },
+  {
+    "id": 1777101371664,
+    "userId": 1776177252045,
+    "items": [
+      {
+        "id": 4,
+        "name": "Кігтеточка \"Вежа\"",
+        "price": 1200,
+        "category": "accessories"
+      },
+      {
+        "id": 5,
+        "name": "Шампунь для цуценят",
+        "price": 230,
+        "category": "hygiene"
+      }
+    ],
+    "total": 1430,
+    "shippingDetails": {
+      "address": "Харків",
+      "phone": "+380 9999999999"
+    },
+    "createdAt": 1777101371664
+  },
+  {
+    "id": 1777124536122,
+    "userId": 1776177252045,
+    "items": [
+      {
+        "id": 3,
+        "name": "Лежанка (M)",
+        "price": 850,
+        "category": "accessories"
+      },
+      {
+        "id": 4,
+        "name": "Кігтеточка \"Вежа\"",
+        "price": 1200,
+        "category": "accessories"
+      },
+      {
+        "id": 5,
+        "name": "Шампунь для цуценят",
+        "price": 230,
+        "category": "hygiene"
+      }
+    ],
+    "total": 2280,
+    "shippingDetails": {
+      "address": "asasdfasd",
+      "phone": "asdasdasd"
+    },
+    "createdAt": 1777124536122
+  },
+  {
+    "id": 1777125764431,
+    "userId": 1776177252045,
+    "items": [
+      {
+        "id": 5,
+        "name": "Шампунь для цуценят",
+        "price": 230,
+        "category": "hygiene"
+      },
+      {
+        "id": 4,
+        "name": "Кігтеточка \"Вежа\"",
+        "price": 1200,
+        "category": "accessories"
+      },
+      {
+        "id": 3,
+        "name": "Лежанка (M)",
+        "price": 850,
+        "category": "accessories"
+      }
+    ],
+    "total": 2280,
+    "shippingDetails": {
+      "address": "xzx",
+      "phone": "zxzx"
+    },
+    "createdAt": 1777125764431
+  },
+  {
+    "id": 1777130068215,
+    "userId": 1776177252045,
+    "items": [
+      {
+        "id": 3,
+        "name": "Trixie Шлея з повідцем для котів",
+        "price": 175,
+        "category": "accessories",
+        "image": "https://petslike.ua/images/product/large/61803c8ad7e069d2257ee532dbf67914.jpeg"
+      },
+      {
+        "id": 3,
+        "name": "Trixie Шлея з повідцем для котів",
+        "price": 175,
+        "category": "accessories",
+        "image": "https://petslike.ua/images/product/large/61803c8ad7e069d2257ee532dbf67914.jpeg"
+      },
+      {
+        "id": 3,
+        "name": "Trixie Шлея з повідцем для котів",
+        "price": 175,
+        "category": "accessories",
+        "image": "https://petslike.ua/images/product/large/61803c8ad7e069d2257ee532dbf67914.jpeg"
+      },
+      {
+        "id": 3,
+        "name": "Trixie Шлея з повідцем для котів",
+        "price": 175,
+        "category": "accessories",
+        "image": "https://petslike.ua/images/product/large/61803c8ad7e069d2257ee532dbf67914.jpeg"
+      }
+    ],
+    "total": 700,
+    "shippingDetails": {
+      "address": "546н5у7",
+      "phone": "е5у76ш8"
+    },
+    "createdAt": 1777130068215
+  },
+  {
+    "id": 1777225033507,
+    "userId": 1777224600897,
+    "items": [
+      {
+        "id": 3,
+        "name": "Trixie Шлея з повідцем для котів",
+        "price": 175,
+        "category": "accessories",
+        "image": "https://petslike.ua/images/product/large/61803c8ad7e069d2257ee532dbf67914.jpeg"
+      },
+      {
+        "id": 4,
+        "name": "Harley and Cho Dreamer Gray Velvet ",
+        "price": 1990,
+        "category": "accessories",
+        "image": "https://petslike.ua/images/product/large/d1b7237859864942022a9f827ea072d1.jpeg"
+      },
+      {
+        "id": 8,
+        "name": "AnimAll Fun Іграшка кістка",
+        "price": 225,
+        "category": "toys",
+        "image": "https://petslike.ua/images/product/large/35d7a35bc0f9a859026887797ecd71a3.jpeg"
+      }
+    ],
+    "total": 2390,
+    "shippingDetails": {
+      "address": "Харків",
+      "phone": "+380 00 000 00 00"
+    },
+    "createdAt": 1777225033507
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1776177252045,
+    "username": "user1",
+    "password": "$2b$10$bfa4PkXIZsA2G3qLGgFD1uTRXmoF18iPYa1uIUO4iJu06xzLobw2K",
+    "role": "user"
+  },
+  {
+    "id": 1777224600897,
+    "username": "user2",
+    "password": "$2b$10$4DBcDm6hub.x3cMCpP4fSuilOl8gAVVO7C3PWAQU8vy4grWFopD1q",
+    "role": "user"
+  }
+]
