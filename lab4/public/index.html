@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="margin-top: 100px;">       
+
+        <main class="content">
+            <section class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search query">
+                <button onclick="loadPosts()">Search</button>
+            </section>
+
+            <div id="post-container">
+            </div>
+
+            <div id="logsContainer" class="hidden">
+                <h3>Recent server activity:</h3>
+                <pre id="logsOutput"></pre>
+                <button onclick="document.getElementById('logsContainer').classList.add('hidden')">Hide logs</button>
+            </div>
+        </main>
+
+        <aside class="sidebar" style="margin-top: 53px;">
+            <section class="card">
+                <h3>Create a user</h3>
+                <form id="userForm">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <button type="submit">Add</button>
+                </form>
+            </section>
+
+            <section class="card">
+                <h3>Write a post</h3>
+                <form id="postForm">
+                    <input type="number" id="postUserId" placeholder="Author ID" min="1" required>
+                    <input type="text" id="postTitle" placeholder="Post title" required>
+                    <textarea id="postContent" placeholder="Post text" required></textarea>
+                    <button type="submit">Publish</button>
+                </form>
+            </section>
+
+            <section class="card">
+                <h3>Add a friend</h3>
+                <form id="friendForm">
+                    <input type="number" id="friendCurrentUserId" placeholder="User ID" min="1" required>
+                    <input type="number" id="friendId" placeholder="Friend ID" min="1" required>
+                    <button type="submit">Add Friend</button>
+                </form>
+            </section>
+
+            <section class="card admin-panel">
+                <h3>Admin panel</h3>
+                <button id="loadLogsBtn">View logs</button>
+            </section>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
